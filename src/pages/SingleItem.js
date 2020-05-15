@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-export default function Item() {
+export default function SingleItem() {
   let { id } = useParams();
   return <p>Item {id}</p>;
 }

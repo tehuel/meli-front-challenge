@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Items() {
+export default function ItemList() {
   return <p>Items</p>;
 }

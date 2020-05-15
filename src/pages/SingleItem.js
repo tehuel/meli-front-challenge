@@ -17,7 +17,7 @@ export default function SingleItem() {
               <img src="https://picsum.photos/300" alt=""/>
               <div className="content">
                 <p>Nuevo | 999 Vendidos</p>
-                <h2>ID: { id }</h2>
+                <h2>Nombre del Producto { id }</h2>
                 <p>$ 999</p>
                 <a href="#">Comprar</a>
               </div>

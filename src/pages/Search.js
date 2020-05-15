@@ -5,7 +5,7 @@ import logo from "../assets/img/logo.svg";
 export default function Search() {
   return (
     <nav className="main-navbar">
-      <div className="container">
+      <div className="container navbar-container">
         <div className="logo">
           <img src={logo} alt="Mercado Libre"/>
         </div>

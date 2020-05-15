@@ -7,6 +7,9 @@
     margin: 0 auto;
     width: 90%;
     max-width: 40rem;
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
 }

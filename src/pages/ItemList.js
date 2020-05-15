@@ -1,23 +1,12 @@
 import React from "react";
-import logo from "../assets/img/logo.svg";
-
 import '../assets/styles/search.css';
 import '../assets/styles/results.css';
+import Navbar from "../components/Navbar";
 
 export default function ItemList() {
   return (
     <>
-      <nav className="main-navbar">
-        <div className="container navbar-container">
-          <div className="logo">
-            <img src={logo} alt="Mercado Libre"/>
-          </div>
-          <div className="search-form">
-            <input type="text" id="search-query" name="search-query" required/>
-            <button>Buscar</button>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
       <div>
         <div className="container">
           <div className="breadcrumb">

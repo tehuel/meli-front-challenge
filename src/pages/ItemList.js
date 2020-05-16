@@ -38,19 +38,19 @@ export default function ItemList() {
     );
   }
 
-  return <>
-    <Navbar/>
-    <div>
-      <div className="container">
-        <div className="breadcrumb">
-          {JSON.stringify(categories)}
-        </div>
-        <div className="search-results">
-          {
-            items.map(item => <ItemComponent key={item.id} item={item}/>)
-          }
+  return (
+    <>
+      <Navbar/>
+      <div>
+        <div className="container">
+          <div className="breadcrumb">
+            {JSON.stringify(categories)}
+          </div>
+          <div className="search-results">
+            { items.map(item => <ItemComponent key={item.id} item={item}/>) }
+          </div>
         </div>
       </div>
-    </div>
-  </>;
+    </>
+  );
 }

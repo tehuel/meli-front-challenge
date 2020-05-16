@@ -8,9 +8,7 @@ export function useSearchQueryParam() {
   const [query, setQuery] = useState("");
   useEffect(() => {
     const searchQuery = new URLSearchParams(location.search).get('search')
-    if (searchQuery) {
-      setQuery(searchQuery);
-    }
+    setQuery(searchQuery || "");
   }, [location]);
   return [query]
 }

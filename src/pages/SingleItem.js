@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 
 export default function SingleItem() {
   const { id } = useParams();
@@ -21,7 +20,7 @@ export default function SingleItem() {
     };
     fetchItem();
   }, [id])
-  
+
   if (isLoading) {
     return (
       <div className="container">
@@ -33,29 +32,24 @@ export default function SingleItem() {
   }
 
   return (
-    <>
-      <Navbar/>
-      <div>
-        <div className="container">
-          <div className="breadcrumb">
-            aaa | aaa | aaa
-          </div>
-          <div className="search-results">
-            <div className="row">
-              <img src={item.picture} alt={item.title}/>
-              <div className="content">
-                <p>Nuevo | 999 Vendidos</p>
-                <h2>{item.title}</h2>
-                <p>$ 999</p>
-                <a href="#">Comprar</a>
-              </div>
-            </div>
-            <div className="row details">
-              <p>{item.description}</p>
-            </div>
+    <div className="container">
+      <div className="breadcrumb">
+        aaa | aaa | aaa
+      </div>
+      <div className="search-results">
+        <div className="row">
+          <img src={item.picture} alt={item.title}/>
+          <div className="content">
+            <p>Nuevo | 999 Vendidos</p>
+            <h2>{item.title}</h2>
+            <p>$ 999</p>
+            <a href="#">Comprar</a>
           </div>
         </div>
+        <div className="row details">
+          <p>{item.description}</p>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

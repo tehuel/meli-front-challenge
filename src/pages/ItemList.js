@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useSearchQueryParam} from "../hooks/UseSearchQueryParam";
-import Navbar from "../components/Navbar";
 import ItemComponent from "../components/ItemComponent";
 
 import '../assets/styles/search.css';
@@ -39,18 +38,13 @@ export default function ItemList() {
   }
 
   return (
-    <>
-      <Navbar/>
-      <div>
-        <div className="container">
-          <div className="breadcrumb">
-            {JSON.stringify(categories)}
-          </div>
-          <div className="search-results">
-            { items.map(item => <ItemComponent key={item.id} item={item}/>) }
-          </div>
-        </div>
+    <div className="container">
+      <div className="breadcrumb">
+        {JSON.stringify(categories)}
       </div>
-    </>
+      <div className="search-results">
+        { items.map(item => <ItemComponent key={item.id} item={item}/>) }
+      </div>
+    </div>
   );
 }

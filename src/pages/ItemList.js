@@ -1,31 +1,41 @@
 import React, {useEffect, useState} from "react";
 import useSearchQueryParam from "../hooks/UseSearchQueryParam";
-import ItemComponent from "../components/ItemComponent";
+import useRequestToAPI from "../hooks/UseRequestToAPI";
 
+import ItemComponent from "../components/ItemComponent";
 import '../assets/styles/search.css';
 import '../assets/styles/results.css';
 
 export default function ItemList() {
-  // const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [query] = useSearchQueryParam();
+  const [{ data, isLoading, isError }, doFetch] = useRequestToAPI();
 
   useEffect(() => {
-    const fetchSearch = async () => {
-      if (query) {
-        setIsLoading(true);
-        const searchUrl = encodeURI('/api/items?search=' + query)
-        const searchResponse = await fetch(searchUrl);
-        const searchData = await searchResponse.json();
-        setItems(searchData.items)
-        setCategories(searchData.categories)
-        setIsLoading(false);
-      }
-    };
-    fetchSearch();
-  }, [query])
+    if (query) {
+      const searchUrl = '/api/items?search=' + query;
+      doFetch(searchUrl);
+    }
+  }, [doFetch, query])
+
+  useEffect(() => {
+    if (data) {
+      setItems(data.items);
+      setCategories(data.categories);
+    }
+  }, [data])
+
+  if (isError) {
+    return (
+      <div className="container">
+        <div className="search-results">
+          <p>Error!</p>
+          <p>:(</p>
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (

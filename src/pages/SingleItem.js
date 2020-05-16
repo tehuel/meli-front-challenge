@@ -1,25 +1,33 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
+import useRequestToAPI from "../hooks/UseRequestToAPI";
 
 export default function SingleItem() {
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
+  const [{ data, isLoading, isError }, doFetch] = useRequestToAPI();
   const [item, setItem] = useState({});
+
   useEffect(() => {
-    console.log("aca ejecuto el request a la API", id);
-    const fetchItem = async () => {
-      if (id) {
-        setIsLoading(true);
-        const itemUrl = encodeURI('/api/items/' + id)
-        const itemResponse = await fetch(itemUrl);
-        const itemData = await itemResponse.json();
-        console.log(itemData);
-        setItem(itemData.item);
-        setIsLoading(false);
-      }
-    };
-    fetchItem();
-  }, [id])
+    const searchUrl = '/api/items/' + id;
+    doFetch(searchUrl);
+  }, [doFetch, id])
+
+  useEffect(() => {
+    if (data) {
+      setItem(data.item);
+    }
+  }, [data])
+
+  if (isError) {
+    return (
+      <div className="container">
+        <div className="search-results">
+          <p>Error!</p>
+          <p>:(</p>
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useQueryLocationSync} from "../hooks/UseQueryLocationSync";
+import {useSearchQueryParam} from "../hooks/UseSearchQueryParam";
 import Navbar from "../components/Navbar";
 import ItemComponent from "../components/ItemComponent";
 
@@ -11,7 +11,7 @@ export default function ItemList() {
   // const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [query] = useQueryLocationSync();
+  const [query] = useSearchQueryParam();
 
   useEffect(() => {
     const fetchSearch = async () => {

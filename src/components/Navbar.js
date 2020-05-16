@@ -3,11 +3,11 @@ import {Link, useHistory} from "react-router-dom";
 
 import logo from "../assets/img/logo.svg";
 import "../assets/styles/Navbar.scss";
-import {useQueryLocationSync} from "../hooks/UseQueryLocationSync";
+import {useSearchQueryParam} from "../hooks/UseSearchQueryParam";
 
 export default function Navbar(props) {
   let history = useHistory();
-  const [query] = useQueryLocationSync();
+  const [query] = useSearchQueryParam();
   const [formQuery, setFormQuery] = useState(query);
 
   useEffect(() => {

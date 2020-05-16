@@ -1,7 +1,9 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-export function useQueryLocationSync() {
+// Get and updates 'search' query param from app URL, and saves it in local state.
+// Exposes this local state value and setter.
+export function useSearchQueryParam() {
   let location = useLocation();
   const [query, setQuery] = useState("");
   useEffect(() => {
@@ -10,5 +12,5 @@ export function useQueryLocationSync() {
       setQuery(searchQuery);
     }
   }, [location]);
-  return [query, setQuery]
+  return [query]
 }

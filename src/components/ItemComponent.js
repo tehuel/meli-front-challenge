@@ -7,8 +7,7 @@ function formatPrice(price) {
     currency: price.currency,
   });
   const floatValue = parseFloat(`${price.amount}.${price.decimals}`);
-  const formattedPrice = formatter.format(floatValue);
-  return formattedPrice;
+  return formatter.format(floatValue);
 }
 
 export default function ItemComponent({ item }) {

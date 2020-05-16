@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
-import {useSearchQueryParam} from "../hooks/UseSearchQueryParam";
+import useSearchQueryParam from "../hooks/UseSearchQueryParam";
 
 import logo from "../assets/img/logo.svg";
 import "../assets/styles/Navbar.scss";

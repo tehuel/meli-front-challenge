@@ -28,7 +28,7 @@ export default function Navbar(props) {
           </Link>
         </div>
         <form className="search-form" onSubmit={handleFormSubmit}>
-          <input type="text" id="search-query" name="search-query" required value={formQuery} onChange={e => setFormQuery(e.target.value)}/>
+          <input type="text" id="search-query" name="search-query" autoFocus="autoFocus" value={formQuery} onChange={e => setFormQuery(e.target.value)}/>
           <button type="submit">Buscar</button>
         </form>
       </div>

@@ -1,5 +1,9 @@
 import React from "react";
 
+import '../assets/styles/search.css';
+
 export default function Search() {
-  return <p>Index</p>;
+  return (
+    <p>Hola.</p>
+  );
 }

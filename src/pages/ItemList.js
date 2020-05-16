@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import '../assets/styles/search.css';
 import '../assets/styles/results.css';
-import Navbar from "../components/Navbar";
 import {useQueryLocationSync} from "../hooks/UseQueryLocationSync";
+import Navbar from "../components/Navbar";
+import ItemComponent from "../components/ItemComponent";
 
 export default function ItemList() {
   // const [error, setError] = useState(null);
@@ -26,32 +26,19 @@ export default function ItemList() {
     fetchSearch();
   }, [query])
 
-  return (
-    <>
-      <Navbar/>
-      <div>
-        <div className="container">
-          <div className="breadcrumb">
-            {JSON.stringify(categories)}
-          </div>
-          <div className="search-results">
-            {
-              items.map(item => { return (
-                <div className="item" key={item.id}>
-                  <Link to={`/items/${item.id}`}>
-                    <img src={item.picture} alt={item.title}/>
-                  </Link>
-                  <div className="content">
-                    <p>$ 999</p>
-                    <h2>{item.title}</h2>
-                  </div>
-                </div>
-
-              )})
-            }
-          </div>
+  return <>
+    <Navbar/>
+    <div>
+      <div className="container">
+        <div className="breadcrumb">
+          {JSON.stringify(categories)}
+        </div>
+        <div className="search-results">
+          {
+            items.map(item => <ItemComponent key={item.id} item={item}/>)
+          }
         </div>
       </div>
-    </>
-  );
+    </div>
+  </>;
 }

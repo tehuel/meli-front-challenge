@@ -7,6 +7,8 @@ export default function useRequestToAPI() {
   const [url, setUrl] = useState(null);
 
   useEffect(() => {
+    let unmounted = false;
+
     const fetchData = async () => {
       if (url) {
         setIsError(false);
@@ -15,15 +17,26 @@ export default function useRequestToAPI() {
         try {
           const response = await fetch(encodedUrl);
           const responseData = await response.json()
-          setData(responseData);
+          if (!unmounted) {
+            setData(responseData);
+          }
         } catch (e) {
           console.error("Error en el request", e);
-          setIsError(true);
+          if (!unmounted) {
+            setIsError(true);
+          }
         }
-        setIsLoading(false);
+        if (!unmounted) {
+          setIsLoading(false);
+        }
       }
     };
     fetchData();
+
+    // set internal flag when component is unmounted
+    return () => {
+      unmounted = true;
+    };
   }, [url]);
 
   return [{ data, isLoading, isError }, setUrl];

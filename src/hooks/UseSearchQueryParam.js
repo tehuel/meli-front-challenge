@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 
 // Get and updates 'search' query param from app URL, and saves it in local state.
 // Exposes this local state value and setter.
-export function useSearchQueryParam() {
+export default function useSearchQueryParam() {
   let location = useLocation();
   const [query, setQuery] = useState("");
   useEffect(() => {

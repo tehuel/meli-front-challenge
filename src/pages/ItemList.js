@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useSearchQueryParam} from "../hooks/UseSearchQueryParam";
+import useSearchQueryParam from "../hooks/UseSearchQueryParam";
 import ItemComponent from "../components/ItemComponent";
 
 import '../assets/styles/search.css';

@@ -4,7 +4,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import logo from "../assets/img/logo.svg";
 import "../assets/styles/Navbar.scss";
 
-function useLocationSynchronization() {
+function useQueryLocationSync() {
   let location = useLocation();
   const [query, setQuery] = useState("");
   useEffect(() => {
@@ -18,7 +18,7 @@ function useLocationSynchronization() {
 
 export default function Navbar(props) {
   let history = useHistory();
-  const [query] = useLocationSynchronization();
+  const [query] = useQueryLocationSync();
   const [formQuery, setFormQuery] = useState(query);
 
   useEffect(() => {

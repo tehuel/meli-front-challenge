@@ -2,7 +2,7 @@ import fetch from 'cross-fetch';
 
 export default async (req, res) => {
   const newQuery = new URLSearchParams();
-  newQuery.append("q", req.query.q);
+  newQuery.append("q", req.query.search);
 
   const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?${newQuery.toString()}`);
   const { available_filters, results } = await response.json();

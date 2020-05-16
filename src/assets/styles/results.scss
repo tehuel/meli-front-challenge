@@ -1,0 +1,18 @@
+@import "variables";
+
+.item {
+    padding: $general-padding;
+    border-bottom: 1px solid $separator-border-color;
+    display: flex;
+    &:last-child {
+        border-bottom: none;
+    }
+
+    img {
+        border-radius: $general-border-radius;
+        width: $results-image-size;
+        height: $results-image-size;
+        object-fit: cover;
+        overflow: hidden;
+    }
+}

@@ -1,6 +1,4 @@
-$main-color: #FFE600;
-$navbar-padding: 0.5rem;
-$navbar-logo-width: 3rem;
+@import "variables";
 
 .main-navbar {
     background-color: $main-color;

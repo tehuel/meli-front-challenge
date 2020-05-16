@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import useRequestToAPI from "../hooks/UseRequestToAPI";
+import Alert from "../components/Alert";
 
 export default function SingleItem() {
   const { id } = useParams();
@@ -21,9 +22,11 @@ export default function SingleItem() {
   if (isError) {
     return (
       <div className="container">
-        <div className="search-results">
-          <p>Error!</p>
-          <p>:(</p>
+        <div className="page-container">
+          <Alert>
+            <p>Error!</p>
+            <p>:(</p>
+          </Alert>
         </div>
       </div>
     );
@@ -32,8 +35,10 @@ export default function SingleItem() {
   if (isLoading) {
     return (
       <div className="container">
-        <div className="search-results">
-          <p>Cargando...</p>
+        <div className="page-container">
+          <Alert>
+            <p>Cargando...</p>
+          </Alert>
         </div>
       </div>
     );
@@ -44,7 +49,7 @@ export default function SingleItem() {
       <div className="breadcrumb">
         aaa | aaa | aaa
       </div>
-      <div className="search-results">
+      <div className="page-container">
         <div className="row">
           <img src={item.picture} alt={item.title}/>
           <div className="content">

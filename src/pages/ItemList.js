@@ -3,8 +3,7 @@ import useSearchQueryParam from "../hooks/UseSearchQueryParam";
 import useRequestToAPI from "../hooks/UseRequestToAPI";
 
 import ItemComponent from "../components/ItemComponent";
-import '../assets/styles/search.css';
-import '../assets/styles/results.css';
+import Alert from "../components/Alert";
 
 export default function ItemList() {
   const [items, setItems] = useState([]);
@@ -29,9 +28,11 @@ export default function ItemList() {
   if (isError) {
     return (
       <div className="container">
-        <div className="search-results">
-          <p>Error!</p>
-          <p>:(</p>
+        <div className="page-container">
+          <Alert>
+            <p>Error!</p>
+            <p>:(</p>
+          </Alert>
         </div>
       </div>
     );
@@ -40,8 +41,10 @@ export default function ItemList() {
   if (isLoading) {
     return (
       <div className="container">
-        <div className="search-results">
-          <p>Cargando...</p>
+        <div className="page-container">
+          <Alert>
+            <p>Cargando...</p>
+          </Alert>
         </div>
       </div>
     );
@@ -52,7 +55,7 @@ export default function ItemList() {
       <div className="breadcrumb">
         {JSON.stringify(categories)}
       </div>
-      <div className="search-results">
+      <div className="page-container">
         { items.map(item => <ItemComponent key={item.id} item={item}/>) }
       </div>
     </div>

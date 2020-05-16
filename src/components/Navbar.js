@@ -14,7 +14,7 @@ export default function Navbar(props) {
     setFormQuery(query);
   }, [query]);
 
-  function handleClick(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
     history.push("/items?search=" + formQuery);
   }
@@ -27,10 +27,10 @@ export default function Navbar(props) {
             <img src={logo} alt="Mercado Libre"/>
           </Link>
         </div>
-        <div className="search-form">
+        <form className="search-form" onSubmit={handleFormSubmit}>
           <input type="text" id="search-query" name="search-query" required value={formQuery} onChange={e => setFormQuery(e.target.value)}/>
-          <button onClick={handleClick}>Buscar</button>
-        </div>
+          <button type="submit">Buscar</button>
+        </form>
       </div>
     </nav>
   )

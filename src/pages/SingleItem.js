@@ -4,20 +4,34 @@ import Navbar from "../components/Navbar";
 
 export default function SingleItem() {
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState({});
   useEffect(() => {
     console.log("aca ejecuto el request a la API", id);
     const fetchItem = async () => {
       if (id) {
+        setIsLoading(true);
         const itemUrl = encodeURI('/api/items/' + id)
         const itemResponse = await fetch(itemUrl);
         const itemData = await itemResponse.json();
         console.log(itemData);
         setItem(itemData.item);
+        setIsLoading(false);
       }
     };
     fetchItem();
   }, [id])
+  
+  if (isLoading) {
+    return (
+      <div className="container">
+        <div className="search-results">
+          <p>Cargando...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar/>

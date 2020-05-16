@@ -8,7 +8,7 @@ import '../assets/styles/results.css';
 
 export default function ItemList() {
   // const [error, setError] = useState(null);
-  // const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
   const [query] = useSearchQueryParam();
@@ -16,15 +16,27 @@ export default function ItemList() {
   useEffect(() => {
     const fetchSearch = async () => {
       if (query) {
+        setIsLoading(true);
         const searchUrl = encodeURI('/api/items?search=' + query)
         const searchResponse = await fetch(searchUrl);
         const searchData = await searchResponse.json();
         setItems(searchData.items)
         setCategories(searchData.categories)
+        setIsLoading(false);
       }
     };
     fetchSearch();
   }, [query])
+
+  if (isLoading) {
+    return (
+      <div className="container">
+        <div className="search-results">
+          <p>Cargando...</p>
+        </div>
+      </div>
+    );
+  }
 
   return <>
     <Navbar/>

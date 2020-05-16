@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import '../assets/styles/search.css';
-import '../assets/styles/results.css';
 import {useQueryLocationSync} from "../hooks/UseQueryLocationSync";
 import Navbar from "../components/Navbar";
 import ItemComponent from "../components/ItemComponent";
+
+import '../assets/styles/search.css';
+import '../assets/styles/results.css';
 
 export default function ItemList() {
   // const [error, setError] = useState(null);
@@ -13,7 +14,6 @@ export default function ItemList() {
   const [query] = useQueryLocationSync();
 
   useEffect(() => {
-    console.log("aca ejecuto el request a la API", query);
     const fetchSearch = async () => {
       if (query) {
         const searchUrl = encodeURI('/api/items?search=' + query)

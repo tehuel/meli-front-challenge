@@ -1,20 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useHistory} from "react-router-dom";
 
 import logo from "../assets/img/logo.svg";
 import "../assets/styles/Navbar.scss";
-
-function useQueryLocationSync() {
-  let location = useLocation();
-  const [query, setQuery] = useState("");
-  useEffect(() => {
-    const searchQuery = new URLSearchParams(location.search).get('search')
-    if(searchQuery) {
-      setQuery(searchQuery);
-    }
-  }, [location]);
-  return [query, setQuery]
-}
+import {useQueryLocationSync} from "../hooks/UseQueryLocationSync";
 
 export default function Navbar(props) {
   let history = useHistory();
@@ -22,11 +11,6 @@ export default function Navbar(props) {
   const [formQuery, setFormQuery] = useState(query);
 
   useEffect(() => {
-    console.log("formQuery cambiado!", formQuery);
-  }, [formQuery]);
-
-  useEffect(() => {
-    console.log("query cambiado!", query);
     setFormQuery(query);
   }, [query]);
 

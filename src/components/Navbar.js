@@ -1,17 +1,38 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 import logo from "../assets/img/logo.svg";
 import "../assets/styles/Navbar.scss";
 
-export default function Navbar() {
-  const [query, setQuery] = useState('');
+function useLocationSynchronization() {
+  let location = useLocation();
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    const searchQuery = new URLSearchParams(location.search).get('search')
+    if(searchQuery) {
+      setQuery(searchQuery);
+    }
+  }, [location]);
+  return [query, setQuery]
+}
+
+export default function Navbar(props) {
   let history = useHistory();
+  const [query] = useLocationSynchronization();
+  const [formQuery, setFormQuery] = useState(query);
+
+  useEffect(() => {
+    console.log("formQuery cambiado!", formQuery);
+  }, [formQuery]);
+
+  useEffect(() => {
+    console.log("query cambiado!", query);
+    setFormQuery(query);
+  }, [query]);
 
   function handleClick(e) {
     e.preventDefault();
-    console.log('Busqueda iniciada', query);
-    history.push("/items?search=" + query);
+    history.push("/items?search=" + formQuery);
   }
 
   return (
@@ -23,7 +44,7 @@ export default function Navbar() {
           </Link>
         </div>
         <div className="search-form">
-          <input type="text" id="search-query" name="search-query" required value={query} onChange={e => setQuery(e.target.value)}/>
+          <input type="text" id="search-query" name="search-query" required value={formQuery} onChange={e => setFormQuery(e.target.value)}/>
           <button onClick={handleClick}>Buscar</button>
         </div>
       </div>

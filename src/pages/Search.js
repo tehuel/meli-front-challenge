@@ -1,6 +1,7 @@
 import React from "react";
-import '../assets/styles/search.css';
 import Navbar from "../components/Navbar";
+
+import '../assets/styles/search.css';
 
 export default function Search() {
   return (

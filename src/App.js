@@ -12,9 +12,15 @@ function App() {
       <Router>
         <Navbar/>
         <Switch>
-            <Route exact path="/" children={<Search/>}/>
-            <Route path="/items/:id" children={<SingleItem/>}/>
-            <Route path="/items" children={<ItemList/>}/>
+          <Route exact path="/">
+            {<Search/>}
+          </Route>
+          <Route path="/items/:id">
+            {<SingleItem/>}
+          </Route>
+          <Route path="/items">
+            {<ItemList/>}
+          </Route>
         </Switch>
       </Router>
     </div>

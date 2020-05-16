@@ -13,10 +13,8 @@ export default function useRequestToAPI() {
         setIsLoading(true);
         const encodedUrl = encodeURI(url);
         try {
-          console.log("lanzando request", encodedUrl);
           const response = await fetch(encodedUrl);
           const responseData = await response.json()
-          console.info(responseData);
           setData(responseData);
         } catch (e) {
           console.error("Error en el request", e);

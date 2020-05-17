@@ -17,7 +17,9 @@ export default function Navbar(props) {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    history.push("/items?search=" + formQuery);
+    if (formQuery) {
+      history.push("/items?search=" + formQuery);
+    }
   }
 
   return (

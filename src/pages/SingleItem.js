@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import useRequestToAPI from "../hooks/UseRequestToAPI";
 import Alert from "../components/Alert";
 
@@ -27,6 +27,9 @@ export default function SingleItem() {
             <p>Error!</p>
             <p>:(</p>
           </Alert>
+          <p>
+            <Link to="/">Volver al Inicio</Link>
+          </p>
         </div>
       </div>
     );

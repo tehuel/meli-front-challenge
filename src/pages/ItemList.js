@@ -4,6 +4,7 @@ import useRequestToAPI from "../hooks/UseRequestToAPI";
 
 import ItemComponent from "../components/ItemComponent";
 import Alert from "../components/Alert";
+import {Link} from "react-router-dom";
 
 export default function ItemList() {
   const [items, setItems] = useState([]);
@@ -33,6 +34,9 @@ export default function ItemList() {
             <p>Error!</p>
             <p>:(</p>
           </Alert>
+          <p>
+            <Link to="/">Volver al Inicio</Link>
+          </p>
         </div>
       </div>
     );

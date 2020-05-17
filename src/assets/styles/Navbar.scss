@@ -30,6 +30,8 @@
             input, button {
                 background-color: #FFFFFF;
                 border: 0;
+                margin: 0;
+                padding: 0;
             }
 
             input {
@@ -38,8 +40,6 @@
             }
             button {
                 padding: 0 1rem;
-                margin: 0;
-                border: 0;
                 border-left: 1px solid $separator-border-color;
                 img.icon {
                     height: 1.5rem;

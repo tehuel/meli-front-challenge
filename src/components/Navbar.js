@@ -3,6 +3,7 @@ import {Link, useHistory} from "react-router-dom";
 import useSearchQueryParam from "../hooks/UseSearchQueryParam";
 
 import logo from "../assets/img/logo.svg";
+import searchIcon from "../assets/img/search.svg";
 import "../assets/styles/Navbar.scss";
 
 export default function Navbar(props) {
@@ -28,8 +29,10 @@ export default function Navbar(props) {
           </Link>
         </div>
         <form className="search-form" onSubmit={handleFormSubmit}>
-          <input type="text" id="search-query" name="search-query" autoFocus="autoFocus" value={formQuery} onChange={e => setFormQuery(e.target.value)}/>
-          <button type="submit">Buscar</button>
+          <input type="text" id="search-query" name="search-query" autoFocus="autoFocus" value={formQuery} onChange={e => setFormQuery(e.target.value)} placeholder="Nunca dejes de buscar..."/>
+          <button type="submit">
+            <img src={searchIcon} alt="Buscar" className="icon"/>
+          </button>
         </form>
       </div>
     </nav>

@@ -2,7 +2,7 @@
 
 .main-navbar {
     background-color: $main-color;
-    padding: $navbar-padding;
+    padding: $navbar-padding 0;
 
     .navbar-container {
         display: flex;
@@ -24,8 +24,29 @@
             width: 100%;
             flex-grow: 1;
             display: flex;
+            border-radius: $general-border-radius;
+            overflow: hidden;
+
+            input, button {
+                background-color: #FFFFFF;
+                border: 0;
+            }
+
             input {
+                padding-left: 1rem;
                 width: 100%;
+            }
+            button {
+                padding: 0 1rem;
+                margin: 0;
+                border: 0;
+                border-left: 1px solid $separator-border-color;
+                img.icon {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                    line-height: 1.5rem;
+                    object-fit: contain;
+                }
             }
         }
     }

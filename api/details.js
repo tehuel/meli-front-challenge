@@ -10,8 +10,6 @@ export default async (req, res) => {
   const itemInformationResponse = await fetch(informationUrl);
   const itemInformation = await itemInformationResponse.json();
 
-  console.log(itemInformation);
-
   const categoryUrl = encodeURI('https://api.mercadolibre.com/categories/' + itemInformation.category_id);
   const itemCategoryResponse = await fetch(categoryUrl);
   const itemCategory = await itemCategoryResponse.json();

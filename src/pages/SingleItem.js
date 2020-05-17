@@ -16,7 +16,6 @@ export default function SingleItem() {
 
   useEffect(() => {
     if (data) {
-      console.log("setItem", data.item);
       setItem(data.item);
     }
   }, [data])

@@ -5,6 +5,7 @@ import useRequestToAPI from "../hooks/UseRequestToAPI";
 import ItemComponent from "../components/ItemComponent";
 import Alert from "../components/Alert";
 import {Link} from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default function ItemList() {
   const [items, setItems] = useState([]);
@@ -56,9 +57,7 @@ export default function ItemList() {
 
   return (
     <div className="container">
-      <div className="breadcrumb">
-        {JSON.stringify(categories)}
-      </div>
+      <Breadcrumb categories={categories}/>
       <div className="page-container">
         { items.map(item => <ItemComponent key={item.id} item={item}/>) }
       </div>

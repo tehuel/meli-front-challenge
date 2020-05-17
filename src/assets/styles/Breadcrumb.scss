@@ -1,0 +1,11 @@
+@import "variables";
+
+.breadcrumb {
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    color: $body-light-color;
+    .breadcrumb-separator {
+        color: lighten($body-light-color, 20%);
+    }
+}

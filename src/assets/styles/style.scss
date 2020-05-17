@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 body {
     background-color: $body-bg;
@@ -13,7 +14,18 @@ body {
 .container {
     margin: 0 auto;
     width: 90%;
-    max-width: 40rem;
+}
+
+@include tablet-up {
+    .container {
+        max-width: $tablet-breakpoint
+    }
+}
+
+@include desktop-up {
+    .container {
+        max-width: $desktop-breakpoint;
+    }
 }
 
 .page-container {

@@ -59,15 +59,21 @@ export default function ItemDetails() {
       <Breadcrumb categories={item.categories}/>
       <div className="page-container">
         <div className="row">
-          <div className="col-75">
+          <div className="col-picture">
             <img src={item.picture} alt={item.title} className="product-image"/>
           </div>
-          <div className="col-25">
+          <div className="col-details">
             <div className="product-details-sidebar">
-              <p>Nuevo | 999 Vendidos</p>
+              <div className="product-information">
+                <p className="product-quantity">{ item.sold_quantity } Vendidos</p>
+                <p className="product-shipping">{item.free_shipping ? 'Envio Gratis' : ''}</p>
+                <p className="product-condition">{item.condition === 'new' ? 'Nuevo' : 'Usado' }</p>
+              </div>
               <h2 className="product-title">{item.title}</h2>
               <p className="product-price-large">{ formattedItemPrice }</p>
-              <a href="#" className="product-buy-button">Comprar Ahora</a>
+              <p>
+                <button className="product-buy-button">Comprar Ahora</button>
+              </p>
             </div>
           </div>
         </div>

@@ -1,33 +1,28 @@
 import fetch from 'cross-fetch';
+import categoriesFormatter from "./categoriesFormatter";
+import itemFormatter from "./ItemFormatter";
 
 export default async (req, res) => {
-  const newQuery = new URLSearchParams();
-  newQuery.append("q", req.query.search);
 
-  const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?${newQuery.toString()}`);
-  const { available_filters, results } = await response.json();
+  if (!req.query.search) {
+    res
+      .status(400)
+      .json({
+        author: {
+          name: "Tehuel",
+          lastName: "Torres Baldi",
+        },
+        status: "400",
+        error: "`search` parameter cannot be empty",
+    })
+  }
 
-  const formattedItems = results.map(item => {
-    const splittedPrice = (item.price + "").split(".")
-    return {
-      id: item.id,
-      title: item.title,
-      price: {
-        currency: item.currency_id,
-        amount: parseInt(splittedPrice[0]),
-        decimals: parseInt(splittedPrice[1]) || 0,
-      },
-      picture: item.thumbnail,
-      condition: item.condition,
-      free_shipping: item.shipping.free_shipping,
-    };
-  })
+  const encodedUrl = encodeURI('https://api.mercadolibre.com/sites/MLA/search?q=' + req.query.search);
+  const response = await fetch(encodedUrl);
+  const responseData = await response.json();
 
-  const formattedCategories = available_filters
-    .find(filter => filter.id === 'category')
-    .values
-    .sort((catA, catB) => catB.results - catA.results)
-    .map(category => `${category.name} (${category.results})`)
+  const formattedCategories = categoriesFormatter(responseData);
+  const formattedItems = responseData.results.map(i => itemFormatter(i));
 
   res.json({
     author: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
-import SingleItem from "./pages/SingleItem";
+import ItemDetails from "./pages/ItemDetails";
 import ItemList from "./pages/ItemList";
 import Search from "./pages/Search";
 
@@ -16,7 +16,7 @@ function App() {
             {<Search/>}
           </Route>
           <Route path="/items/:id">
-            {<SingleItem/>}
+            {<ItemDetails/>}
           </Route>
           <Route path="/items">
             {<ItemList/>}

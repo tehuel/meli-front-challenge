@@ -1,0 +1,29 @@
+@import "variables";
+
+.product-image {
+    width: 100%;
+    object-fit: contain;
+}
+
+@media only screen and (min-width: 768px) {
+    .row {
+        display: flex;
+    }
+    .col-25 {
+        width: 25%;
+    }
+    .col-75 {
+        width: 75%;
+    }
+    .col-50 {
+        width: 50%;
+    }
+}
+
+.details {
+    padding: $general-padding;
+    margin-top: $general-padding;
+    p {
+        color: lighten($body-color, 10%);
+    }
+}

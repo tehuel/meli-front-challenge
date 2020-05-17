@@ -44,27 +44,5 @@
 
     .item-content {
         flex-grow: 1;
-        .product-information {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .product-price {
-            font-size: 1.3rem;
-        }
-
-        .product-shipping {
-            color: $shipping-color;
-            padding: $general-padding;
-        }
-
-        .product-condition {
-            flex-grow: 1;
-            text-align: right;
-        }
-        .product-title {
-            margin: 0;
-            font-weight: normal;
-        }
     }
 }

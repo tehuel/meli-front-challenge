@@ -7,6 +7,9 @@ import Alert from "../components/Alert";
 import {Link} from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 
+import '../assets/styles/ItemList.scss';
+import "../assets/styles/Product.scss";
+
 export default function ItemList() {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);

@@ -1,0 +1,55 @@
+@import "variables";
+
+.product-information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-details-sidebar {
+    border: 1px solid $separator-border-color;
+    border-radius: $general-border-radius;
+    margin: $general-padding;
+    padding: $general-padding;
+}
+
+.product-price {
+    font-size: 1.3rem;
+}
+
+.product-price-large {
+    font-size: 2.5rem;
+    font-weight: lighter;
+}
+
+.product-shipping {
+    color: $shipping-color;
+    padding: $general-padding;
+}
+
+.product-condition {
+    flex-grow: 1;
+    text-align: right;
+}
+
+.product-title {
+    margin: 0;
+    font-weight: normal;
+}
+
+.product-buy-button {
+    margin-top: $general-padding;
+    padding: $general-padding $general-padding*2;
+    text-align: center;
+    display: block;
+    font-weight: normal;
+    background-color: $button-color;
+    color: #FFF;
+    transition: all 300ms ease-in-out;
+    border-radius: $general-border-radius;
+    text-decoration: none;
+
+    &:hover {
+        background-color: darken($button-color, 10%);
+    }
+}

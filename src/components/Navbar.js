@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useHistory} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import useSearchQueryParam from "../hooks/UseSearchQueryParam";
 
 import logo from "../assets/img/logo.svg";
@@ -27,16 +27,24 @@ export default function Navbar(props) {
       <div className="container navbar-container">
         <div className="logo">
           <Link to="/">
-            <img src={logo} alt="Mercado Libre"/>
+            <img src={logo} alt="Mercado Libre" />
           </Link>
         </div>
         <form className="search-form" onSubmit={handleFormSubmit}>
-          <input type="text" id="search-query" name="search-query" autoFocus="autoFocus" value={formQuery} onChange={e => setFormQuery(e.target.value)} placeholder="Nunca dejes de buscar..."/>
+          <input
+            type="text"
+            id="search-query"
+            name="search-query"
+            autoFocus="autoFocus"
+            value={formQuery}
+            onChange={(e) => setFormQuery(e.target.value)}
+            placeholder="Nunca dejes de buscar..."
+          />
           <button type="submit">
-            <img src={searchIcon} alt="Buscar" className="icon"/>
+            <img src={searchIcon} alt="Buscar" className="icon" />
           </button>
         </form>
       </div>
     </nav>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import useRequestToAPI from "../hooks/UseRequestToAPI";
 import formatPrice from "../filters/FormatPrice";
 
@@ -15,15 +15,15 @@ export default function ItemDetails() {
   const [item, setItem] = useState(null);
 
   useEffect(() => {
-    const searchUrl = '/api/items/' + id;
+    const searchUrl = "/api/items/" + id;
     doFetch(searchUrl);
-  }, [doFetch, id])
+  }, [doFetch, id]);
 
   useEffect(() => {
     if (data) {
       setItem(data.item);
     }
-  }, [data])
+  }, [data]);
 
   if (isError) {
     return (
@@ -56,21 +56,31 @@ export default function ItemDetails() {
   const formattedItemPrice = formatPrice(item.price);
   return (
     <div className="container">
-      <Breadcrumb categories={item.categories}/>
+      <Breadcrumb categories={item.categories} />
       <div className="page-container">
         <div className="row">
           <div className="col-picture">
-            <img src={item.picture} alt={item.title} className="product-image"/>
+            <img
+              src={item.picture}
+              alt={item.title}
+              className="product-image"
+            />
           </div>
           <div className="col-details">
             <div className="product-details-sidebar">
               <div className="product-information">
-                <p className="product-quantity">{ item.sold_quantity } Vendidos</p>
-                <p className="product-shipping">{item.free_shipping ? 'Envio Gratis' : ''}</p>
-                <p className="product-condition">{item.condition === 'new' ? 'Nuevo' : 'Usado' }</p>
+                <p className="product-quantity">
+                  {item.sold_quantity} Vendidos
+                </p>
+                <p className="product-shipping">
+                  {item.free_shipping ? "Envio Gratis" : ""}
+                </p>
+                <p className="product-condition">
+                  {item.condition === "new" ? "Nuevo" : "Usado"}
+                </p>
               </div>
               <h2 className="product-title">{item.title}</h2>
-              <p className="product-price-large">{ formattedItemPrice }</p>
+              <p className="product-price-large">{formattedItemPrice}</p>
               <p>
                 <button className="product-buy-button">Comprar Ahora</button>
               </p>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -10,17 +10,13 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar/>
+        <Navbar />
         <Switch>
           <Route exact path="/">
-            {<Search/>}
+            {<Search />}
           </Route>
-          <Route path="/items/:id">
-            {<ItemDetails/>}
-          </Route>
-          <Route path="/items">
-            {<ItemList/>}
-          </Route>
+          <Route path="/items/:id">{<ItemDetails />}</Route>
+          <Route path="/items">{<ItemList />}</Route>
         </Switch>
       </Router>
     </div>

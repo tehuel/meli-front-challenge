@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function useRequestToAPI() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,7 @@ export default function useRequestToAPI() {
         const encodedUrl = encodeURI(url);
         try {
           const response = await fetch(encodedUrl);
-          const responseData = await response.json()
+          const responseData = await response.json();
           if (!unmounted) {
             setData(responseData);
           }

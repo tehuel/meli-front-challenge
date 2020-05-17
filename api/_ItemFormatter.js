@@ -1,5 +1,5 @@
 export default function itemFormatter(remoteItem) {
-  const splittedPrice = (remoteItem.price + "").split(".")
+  const splittedPrice = (remoteItem.price + "").split(".");
   return {
     id: remoteItem.id,
     title: remoteItem.title,

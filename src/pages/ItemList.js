@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import useSearchQueryParam from "../hooks/UseSearchQueryParam";
 import useRequestToAPI from "../hooks/UseRequestToAPI";
 
 import ItemComponent from "../components/ItemComponent";
 import Alert from "../components/Alert";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 
-import '../assets/styles/ItemList.scss';
+import "../assets/styles/ItemList.scss";
 import "../assets/styles/Product.scss";
 
 export default function ItemList() {
@@ -18,17 +18,17 @@ export default function ItemList() {
 
   useEffect(() => {
     if (query) {
-      const searchUrl = '/api/items?search=' + query;
+      const searchUrl = "/api/items?search=" + query;
       doFetch(searchUrl);
     }
-  }, [doFetch, query])
+  }, [doFetch, query]);
 
   useEffect(() => {
     if (data) {
       setItems(data.items);
       setCategories(data.categories);
     }
-  }, [data])
+  }, [data]);
 
   if (isError) {
     return (
@@ -60,9 +60,11 @@ export default function ItemList() {
 
   return (
     <div className="container">
-      <Breadcrumb categories={categories}/>
+      <Breadcrumb categories={categories} />
       <div className="page-container">
-        { items.map(item => <ItemComponent key={item.id} item={item}/>) }
+        {items.map((item) => (
+          <ItemComponent key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-import '../assets/styles/style.scss';
+import "../assets/styles/style.scss";
 
 export default function Search() {
   return (

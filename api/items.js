@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch';
-import categoriesFormatter from "./categoriesFormatter";
-import itemFormatter from "./ItemFormatter";
+import categoriesFormatter from "./_categoriesFormatter";
+import itemFormatter from "./_ItemFormatter";
 
 export default async (req, res) => {
 

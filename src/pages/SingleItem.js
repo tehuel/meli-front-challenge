@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import useRequestToAPI from "../hooks/UseRequestToAPI";
 import Alert from "../components/Alert";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default function SingleItem() {
   const { id } = useParams();
   const [{ data, isLoading, isError }, doFetch] = useRequestToAPI();
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState(null);
 
   useEffect(() => {
     const searchUrl = '/api/items/' + id;
@@ -15,6 +16,7 @@ export default function SingleItem() {
 
   useEffect(() => {
     if (data) {
+      console.log("setItem", data.item);
       setItem(data.item);
     }
   }, [data])
@@ -47,11 +49,18 @@ export default function SingleItem() {
     );
   }
 
+  if (!item) {
+    return (
+      <div className="container">
+        <div className="page-container">
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="container">
-      <div className="breadcrumb">
-        aaa | aaa | aaa
-      </div>
+      <Breadcrumb categories={item.categories}/>
       <div className="page-container">
         <div className="row">
           <img src={item.picture} alt={item.title}/>

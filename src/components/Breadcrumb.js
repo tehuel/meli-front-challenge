@@ -1,13 +1,13 @@
 import React from "react";
 import "../assets/styles/Breadcrumb.scss";
 
-export default function Breadcrumb(props) {
+export default function Breadcrumb({ categories }) {
 
   return (
     <div className="breadcrumb">
-      { props.categories.map((category, index) => {
+      { categories.map((category, index) => {
         let separator;
-        if (index + 1 < props.categories.length) {
+        if (index + 1 < categories.length) {
           separator = <span className="breadcrumb-separator"> &gt; </span>;
         }
         return (

@@ -58,6 +58,18 @@ export default function ItemList() {
     );
   }
 
+  if (!items.length) {
+    return (
+      <div className="container">
+        <div className="page-container">
+          <Alert>
+            <p>No hay ningún resultado para la búsqueda.</p>
+          </Alert>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <Breadcrumb categories={categories} />

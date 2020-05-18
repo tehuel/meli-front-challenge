@@ -30,7 +30,11 @@ export default function Navbar(props) {
             <img src={logo} alt="Mercado Libre" />
           </Link>
         </div>
-        <form className="search-form" onSubmit={handleFormSubmit}>
+        <form
+          id="navbar-search-form"
+          className="search-form"
+          onSubmit={handleFormSubmit}
+        >
           <input
             type="text"
             id="search-query"

@@ -15,10 +15,10 @@
     "vercel": "^19.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "cy": "cypress run --spec 'cypress/integration/search_spec.js'"
   },
   "eslintConfig": {
     "extends": [

@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# meli-front-challenge
 
-## Available Scripts
+Challenge de Frontend para Mercado Libre, de Tehuel Torres Baldi.
 
-In the project directory, you can run:
+## Local 
 
-### `npm start`
+```bash
+# instalo dependencias
+npm install
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# ejecuto frontend y backend juntos
+npx vercel dev
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Por defecto se va a ejecutar el frontend en http://localhost:3000, y el backend en http://localhost:3000/api.
 
-### `npm test`
+## Tests
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Existen Test de integración. Para ejecutar los tests, teniendo el proyecto levantado y corriendo, ejecutar
 
-### `npm run build`
+```bash
+# ejecuto tests de integración (Cypress)
+npm run cy
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+El proyecto está construido usando React, con `create-react-app`, componentes funcionales y Hooks (para el manejo de estado y comunicacion con la API, principalmente).
 
-### `npm run eject`
+Para los estilos se está usando Sass, con sintaxis SCSS, intentando mantener aislados y modulares los estilos de cada componente, y compartiendo y generalizando variables y mixins en lo posible.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Todas las llamadas a la API se están haciendo usando un Hook custom, que se encarga de manejar los estados de "cargando", "errores", y almacenando los datos de respuesta.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La navegación entre las distintas páginas se está haciendo usando React-Router, usando un componente `<Link>`, y también de manera programática, usando un Hook `useHistory()`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+El precio que se recibe desde backend en distintos componentes se está formateando en frontend usando una funcion de filtro.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Backend
 
-## Learn More
+Decidí usar la plataforma Vercel Now para deploy serverless de frontend y backend, sin tenerr que administrar servidores. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+En el directorio `./api/` del proyecto, los archivos `items.js` y `details.js` son expuestos como endpoints. A partir de un rewrite (configurado en `vercel.json`) termino exponiendo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- endpoint `/api/items` -> handler `items.js`
+- endpoint `/api/items/:id` -> handler `details.js`
 
-### Code Splitting
+Los endpoints responden distintos tipos de errores ante posibles fallos en el procesamiento de los datos.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+El formateo y la construcción de los objetos de respuesta se extrajo a funciones independientes, para facilitar la reutilización y posibles modificaciones.
 
-### Analyzing the Bundle Size
+## Mejoras
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Algunas ideas me quedaron pendientes, y otras se me fueron ocurriendo a medida que desarrollaba la solución.
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Definir Tipos (TypeScript) para los objetos que se comparten entre el backend y el frontend. Esto haría que posibles cambios en el formato de la respuesta del backend sean fáciles de replicar y adaptar en el frontend.
+- 

@@ -1,5 +1,16 @@
 {
   "rewrites": [
     { "source": "/api/items/:id", "destination": "/api/details" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers" : [
+        {
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        }
+      ]
+    }
   ]
 }

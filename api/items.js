@@ -23,7 +23,9 @@ export default async (req, res) => {
 
   let formattedItems;
   try {
-    formattedItems = responseData.results.map((i) => itemFormatter(i));
+    formattedItems = responseData.results
+      .slice(0, 4)
+      .map((i) => itemFormatter(i));
   } catch (e) {
     return res.status(400).json({ error: "Error getting search items" });
   }

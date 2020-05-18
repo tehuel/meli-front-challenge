@@ -17,6 +17,9 @@ export default function useRequestToAPI() {
         try {
           const response = await fetch(encodedUrl);
           const responseData = await response.json();
+          if (responseData.error) {
+            throw Error(responseData.error);
+          }
           if (!unmounted) {
             setData(responseData);
           }

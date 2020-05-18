@@ -10,10 +10,10 @@ export default function Breadcrumb({ categories }) {
           separator = <span className="breadcrumb-separator"> &gt; </span>;
         }
         return (
-          <>
+          <span key={category}>
             <span className="breadcrumb-item">{category}</span>
             {separator}
-          </>
+          </span>
         );
       })}
     </div>

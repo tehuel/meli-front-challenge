@@ -34,3 +34,9 @@ body {
     background-color: $container-bg;
     border-radius: $general-border-radius;
 }
+
+.home {
+    p {
+        padding: $general-padding;
+    }
+}
